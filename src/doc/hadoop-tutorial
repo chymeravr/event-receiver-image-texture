@@ -1,0 +1,42 @@
+Understanding concepts
+------------------------------------------------------------------------------------
+Use yahoo hadoop tutorial to understand the concepts briefly
+For HDFS:-https://developer.yahoo.com/hadoop/tutorial/module2.html
+For MapReduce:-https://developer.yahoo.com/hadoop/tutorial/module4.html
+
+Create virtual computers
+------------------------------------------------------------------------------------
+1. Download and install virtualbox from oracle
+2. In bios menu enable virtualization technology. Without this you won't be able to creat 64 bit virtual machines
+3. Create virtual machines of required config and os.
+4. To install OS just mount iso file in the host machine and while booting the guest OS option to boot from iso will appear.
+5. Install the OS like any other OS and do the required setup like java, hadoop download etc.
+
+Single node setup
+------------------------------------------------------------------------------------
+See http://pingax.com/install-hadoop2-6-0-on-ubuntu/
+Just do following changes for ssh
+sudo apt-get install openssh-server
+ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
+cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
+
+Multinode setup
+-----------------------------------------------------------------------------------
+http://pingax.com/install-apache-hadoop-ubuntu-cluster-setup/
+
+Get hands dirty with HDFS
+-----------------------------------------------------------------------------------
+https://developer.yahoo.com/hadoop/tutorial/module2.html
+Just use hdfs dfs -ls / instead of hadoop dfs -ls / (latter method is deprecated)
+
+Learn Rest WEb API for dfs
+----------------------------------------------------------------------------------
+https://bighadoop.wordpress.com/2013/06/02/hadoop-rest-api-webhdfs/
+
+Tips for loading data fast into hdfs ------ https://blogs.oracle.com/datawarehousing/entry/2data_loading_into_hdfs_part1
+
+Getting started with Pig ------- http://www.rohitmenon.com/index.php/apache-pig-tutorial-part-1/
+
+Designing Hbase schema -------- http://www.cloudera.com/resources/hbasecon/video-hbasecon-2012-lessons-learned-from-opentsdb.html
+
+Hbase with java ------------ http://bestlovejava.blogspot.in/2013/07/hbase-java-simple-example.html
