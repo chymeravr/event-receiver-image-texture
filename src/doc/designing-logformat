@@ -1,0 +1,68 @@
+This document shows the thought process in designing the format of logs for analytics purpose
+
+Publisher
+----------------------------------------------------------------------------------------------------
+Questions to be answered
+1. App Level
+	1.a Number of sessions
+	1.b Average duration of sessions
+	1.c Impressions
+	1.d Effective impression
+	1.e Earnings
+2. AdUnit Level
+	2.a Impressions
+	2.b Effective impressions
+	2.c Earnings
+3. AdInstance Level
+	3.a Impressions
+	3.b Effective impressions
+	3.c Earnings
+
+Parameters that can be varried
+1. Location
+2. Time
+3. Platforms variables (OS, Headsettype, Other stuffs)
+
+Advertiser
+-----------------------------------------------------------------------------------------------------
+Questions to be answered
+1. Campaign Level
+	1.a Impressions
+	1.b Effective Impressions
+	1.c Average Costs
+	1.d Costs
+2. AdGroup Level
+	2.a Impressions
+	2.b Effective Impressions
+	2.c Average Costs
+	2.d Costs
+3. Ad Level
+	3.a Impressions
+	2.b Effective Impressions
+	3.c Average Costs
+	3.d Costs
+
+Parameters that can be varried
+1. Location
+2. Time
+3. Demographic etc.
+
+Final Mysql tables required for achieving this
+------------------------------------------------------------------------------------------------------
+1. (tableid, apid, nSessions, avgDuration, locationid(city, state, country), time(hournumber, date, week, month, year), platformvariables) --- 
+	1.a solves 1.1.a and 1.1.b
+	1.b Rows estimate for 2 years = 200 publisher x 2 apps per publisher x 1000 locations x 2year x 365 days x 24 hours x platformvariables= 7,008,000,000
+2. (tableid, adInstanceid, adUnitid, appid, Impressions, Effective Impressions, Earnings, locationid, timehour, platformvariables) --- 
+	2.a solves 1.3.a,b,c, 1.2.a,b,c, 1.1,c,d,e
+	2.b Rows estimate for 2 years = 200 publishers x 2 apps per publisher x 50 ad instances per app x 2 years x 365 days x 24 hours x platformvariables = 350,400,000
+3. (tableid, adid, adgroupid, campaignid, impressions, effective impressions, costs, locationid(city,state,country), time(hournumber, date, week, year)
+	3.a solves all advertisers analytics
+	3.b Rows estimate for 2 years = 100 advertisers x 50 ads x 1000 locations x 2 yrs x 365 days x 24 hours = 
+	
+Logs to be received for each of these
+-------------------------------------------------------------------------------------------------------
+1. Send by the user app (logtype=APP_START_LOG, userid, apid, starttime, gegography, platform variables) Getting app level parameters and start time of the application
+2. Send by the user app (logtype=APP_STOP_LOG, userid, apid, endtime) Getting stop time of the app
+3. Send by the user app (logtype=AD_DISPLAYED_LOG, userid, apid, adservingid, adinstanceid, adUnitId)
+4. Send by the ad server(logtype=AD_SERVED_LOG, adservingid, sell_price, buy_price)
+5. Send by the user app (logtype=AD_INSTANCE_METRIC_LOG, userid, apid, adservingid, adinstanceid, adUnitid, metric)

@@ -11,7 +11,19 @@ public interface BigDataFS {
 	Boolean exists(String path) throws IOException;
 	Boolean isFile(String path) throws IOException;
 	Boolean isDirectory(String path) throws IOException;
+	/**
+	 * Delete the file denoted by path.
+	 * 
+	 * @param path
+	 * @throws IOException
+	 */
 	void deleteFile(String path) throws IOException;
+	/**
+	 * Delete the directory denoted by path. All the files/directories inside the directory will be deleted.
+	 * 
+	 * @param path
+	 * @throws IOException
+	 */
 	void deleteDirectory(String path) throws IOException;
 	BigDataOutputStream getOutputStream(String filenamePath) throws IOException;
 	BigDataInputStream getInputStream(String filenamePath) throws IOException;
