@@ -23,7 +23,6 @@ import co.chimeralabs.analytics.datareceiver.filesystem.BigDataFS;
 import co.chimeralabs.analytics.datareceiver.filesystem.BigDataInputStreamNormalImpl;
 import co.chimeralabs.analytics.datareceiver.filesystem.BigDataOutputStreamNormalImpl;
 import co.chimeralabs.analytics.datareceiver.model.AnalyticsDataReceiverDTO;
-import co.chimeralabs.analytics.datareceiver.model.AnalyticsDataReceiverDTO.TYPE;
 import co.chimeralabs.analytics.datareceiver.util.RetrieveResources;
 
 
@@ -35,19 +34,71 @@ public class AnalyticsDataRecieverController {
 
 	@ResponseBody
 	@RequestMapping(value="/analytics", method=RequestMethod.POST, headers = {"Content-type=application/json"})
-	public String TestingAnalyticsAPI(@RequestBody List<String> logs) throws JsonParseException, JsonMappingException, IOException{
+	public String TestingAnalyticsAPI(@RequestBody List<AnalyticsDataReceiverDTO> logs) throws JsonParseException, JsonMappingException, IOException{
 		InputStream inputStream = getClass().getResourceAsStream("/machine/MachineConstants.xml");
 		String metafilepath = RetrieveResources.retrieveResourcesAppConatants(inputStream, "storageinfofilepath").get(0);
 		BigDataInputStreamNormalImpl metain = (BigDataInputStreamNormalImpl)bigDataFS.getInputStream(metafilepath);
-		String filepath = metain.readLine();
+		String appStartFilename = metain.readLine();
+		String appEndFilename = metain.readLine();
+		String adDisplayedFilename = metain.readLine();
+		String visibilityMetricFilename = metain.readLine();
+		String adServiceFilename = metain.readLine();
 		metain.close();
+		BigDataOutputStreamNormalImpl appStartOS = null;
+		BigDataOutputStreamNormalImpl appEndOS = null;
+		BigDataOutputStreamNormalImpl adDisplayedOS = null;
+		BigDataOutputStreamNormalImpl visibilityMetricOS = null;
+		BigDataOutputStreamNormalImpl adServiceOS = null;
 		
-		BigDataOutputStreamNormalImpl os = (BigDataOutputStreamNormalImpl)bigDataFS.getOutputStream(filepath);
-		for (String log : logs) {
-			os.writeLine(log);
+		for (AnalyticsDataReceiverDTO log : logs) {
+			switch(log.getType()){
+			case 1:
+				if(appStartOS==null)
+					appStartOS = (BigDataOutputStreamNormalImpl)bigDataFS.getOutputStream(appStartFilename);
+				appStartOS.writeLine(log.getDtoObj());
+				break;
+			case 2:
+				if(appEndOS==null)
+					appEndOS = (BigDataOutputStreamNormalImpl)bigDataFS.getOutputStream(appEndFilename);
+				appEndOS.writeLine(log.getDtoObj());
+				break;
+			case 3:
+				if(adDisplayedOS == null)
+					adDisplayedOS = (BigDataOutputStreamNormalImpl)bigDataFS.getOutputStream(adDisplayedFilename);
+				adDisplayedOS.writeLine(log.getDtoObj());
+				break;
+			case 4:
+				if(visibilityMetricOS == null)
+					visibilityMetricOS = (BigDataOutputStreamNormalImpl)bigDataFS.getOutputStream(visibilityMetricFilename);
+				visibilityMetricOS.writeLine(log.getDtoObj());
+				break;
+			case 5:
+				if(adServiceOS == null)
+					adServiceOS = (BigDataOutputStreamNormalImpl)bigDataFS.getOutputStream(adServiceFilename);
+				adServiceOS.writeLine(log.getDtoObj());
+				break;
+			}
 		}
-		os.flush();
-		os.close();
+		if(appStartOS!=null){
+			appStartOS.flush();
+			appStartOS.close();
+		}
+		if(appEndOS!=null){
+			appEndOS.flush();
+			appEndOS.close();
+		}
+		if(adDisplayedOS!=null){
+			adDisplayedOS.flush();
+			adDisplayedOS.close();
+		}
+		if(visibilityMetricOS!=null){
+			visibilityMetricOS.flush();
+			visibilityMetricOS.close();
+		}
+		if(adServiceOS!=null){
+			adServiceOS.flush();
+			adServiceOS.close();
+		}
 		return "success";
 	}
 	//	

@@ -61,8 +61,8 @@ Final Mysql tables required for achieving this
 	
 Logs to be received for each of these
 -------------------------------------------------------------------------------------------------------
-1. Send by the user app (timestamp, logtype=APP_START_LOG, userid, apid, starttime, gegography, platform variables) Getting app level parameters and start time of the application
+1. Send by the user app (timestamp, logtype=APP_START_LOG, userid, apid, starttime, gegography, platform variables ) Getting app level parameters and start time of the application
 2. Send by the user app (timestamp, logtype=APP_STOP_LOG, userid, apid, starttime, endtime, gegography, platform variables) Getting stop time of the app
-3. Send by the user app (timestamp, logtype=AD_DISPLAYED_LOG, userid, apid, adservingid, adinstanceid, adUnitId, time)
+3. Send by the user app (timestamp, logtype=AD_DISPLAYED_LOG, eventtype, userid, adservingid, adinstanceid, adUnitId, time)
 4. Send by the ad server(timestamp, logtype=AD_SERVED_LOG, adservingid, advertiserid, adid, sell_price, buy_price)
-5. Send by the user app (timestamp, logtype=AD_INSTANCE_METRIC_LOG, userid, apid, adservingid, adinstanceid, adUnitid, time, metric)
+5. Send by the user app (timestamp, logtype=AD_INSTANCE_METRIC_LOG, userid, adservingid, adinstanceid, adUnitid, time, metric)
