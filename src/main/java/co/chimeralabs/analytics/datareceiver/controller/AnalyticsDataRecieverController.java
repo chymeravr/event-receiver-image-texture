@@ -3,10 +3,6 @@ package co.chimeralabs.analytics.datareceiver.controller;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,14 +13,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import co.chimeralabs.analytics.datareceiver.filesystem.BigDataFS;
 import co.chimeralabs.analytics.datareceiver.filesystem.BigDataInputStreamNormalImpl;
 import co.chimeralabs.analytics.datareceiver.filesystem.BigDataOutputStreamNormalImpl;
 import co.chimeralabs.analytics.datareceiver.model.AnalyticsDataReceiverDTO;
 import co.chimeralabs.analytics.datareceiver.util.RetrieveResources;
-
 
 @Controller
 public class AnalyticsDataRecieverController {
@@ -49,8 +43,10 @@ public class AnalyticsDataRecieverController {
 		BigDataOutputStreamNormalImpl adDisplayedOS = null;
 		BigDataOutputStreamNormalImpl visibilityMetricOS = null;
 		BigDataOutputStreamNormalImpl adServiceOS = null;
+		Long timestamp = System.currentTimeMillis();
 		
 		for (AnalyticsDataReceiverDTO log : logs) {
+			log.setDtoObj(timestamp.toString() + "\t" + log.getDtoObj());
 			switch(log.getType()){
 			case 1:
 				if(appStartOS==null)
