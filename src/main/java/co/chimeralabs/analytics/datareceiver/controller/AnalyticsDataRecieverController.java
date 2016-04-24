@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,13 +24,15 @@ import co.chimeralabs.analytics.datareceiver.util.RetrieveResources;
 
 @Controller
 public class AnalyticsDataRecieverController {
-
+	private static final Logger analyticsLogger = LoggerFactory.getLogger(AnalyticsDataRecieverController.class);
+	//private static final Logger analyticsLogger = LogManager.getLogger(AnalyticsDataRecieverController.class);
+	
 	@Autowired
 	BigDataFS bigDataFS;
 
 	@ResponseBody
-	@RequestMapping(value="/analytics", method=RequestMethod.POST, headers = {"Content-type=application/json"})
-	public String TestingAnalyticsAPI(@RequestBody List<AnalyticsDataReceiverDTO> logs) throws JsonParseException, JsonMappingException, IOException{
+	@RequestMapping(value="/analytics_1", method=RequestMethod.POST, headers = {"Content-type=application/json"})
+	public String TestingAnalyticsAPI1(@RequestBody List<AnalyticsDataReceiverDTO> logs) throws JsonParseException, JsonMappingException, IOException{
 		InputStream inputStream = getClass().getResourceAsStream("/machine/MachineConstants.xml");
 		String metafilepath = RetrieveResources.retrieveResourcesAppConatants(inputStream, "storageinfofilepath").get(0);
 		BigDataInputStreamNormalImpl metain = (BigDataInputStreamNormalImpl)bigDataFS.getInputStream(metafilepath);
@@ -97,6 +101,41 @@ public class AnalyticsDataRecieverController {
 		}
 		return "success";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/analytics", method=RequestMethod.POST, headers = {"Content-type=application/json"})
+	public String TestingAnalyticsAPI(@RequestBody List<AnalyticsDataReceiverDTO> logs) throws JsonParseException, JsonMappingException, IOException{
+		Long timestamp = System.currentTimeMillis();
+		for (AnalyticsDataReceiverDTO log : logs) {
+			log.setDtoObj(timestamp.toString() + "\t" + log.getType() + "\t" +log.getDtoObj());
+			switch(log.getType()){
+			case 1:
+				analyticsLogger.info(log.getDtoObj());
+				break;
+			case 2:
+				analyticsLogger.info(log.getDtoObj());
+				break;
+			case 3:
+				analyticsLogger.info(log.getDtoObj());
+				break;
+			case 4:
+				analyticsLogger.info(log.getDtoObj());
+				break;
+			case 5:
+				analyticsLogger.info(log.getDtoObj());
+				break;
+			}
+		}
+		return "success";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/testinglog4j2", method=RequestMethod.GET)
+	public String testing(){
+		analyticsLogger.info("test");
+		return "success";
+	}
+	
 	//	
 	//	private class FileNameChanger{
 	//		private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
