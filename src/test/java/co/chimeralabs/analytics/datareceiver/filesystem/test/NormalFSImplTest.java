@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,6 +20,7 @@ import co.chimeralabs.analytics.datareceiver.filesystem.BigDataInputStream;
 import co.chimeralabs.analytics.datareceiver.filesystem.BigDataNormalFSImpl;
 import co.chimeralabs.analytics.datareceiver.filesystem.BigDataOutputStream;
 
+@Ignore("Not required now")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:META-INF/spring/applicationContext.xml"})
 public class NormalFSImplTest {

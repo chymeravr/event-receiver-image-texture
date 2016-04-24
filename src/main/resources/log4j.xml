@@ -32,14 +32,7 @@
 			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS}:%p - %m%n" />
 		</layout>
 	</appender>
-	<appender name="analytics.file" class="org.apache.log4j.FileAppender">
-		<param name="file" value="${catalina.home}/logs/analytics.log" />
-		<param name="append" value="true" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%m%n" />
-		</layout>
-	</appender>
-	
+
 	<appender name="analytics.file" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="file" value="${catalina.home}/logs/analytics.log" />
 		<param name="datePattern" value="'.'yyyy-MM-dd-HH-mm" />
