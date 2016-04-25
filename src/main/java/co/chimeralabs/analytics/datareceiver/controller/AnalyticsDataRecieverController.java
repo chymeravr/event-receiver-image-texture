@@ -31,7 +31,7 @@ public class AnalyticsDataRecieverController {
 	BigDataFS bigDataFS;
 
 	@ResponseBody
-	@RequestMapping(value="/analytics_1", method=RequestMethod.POST, headers = {"Content-type=application/json"})
+	@RequestMapping(value="/analytics_bak", method=RequestMethod.POST, headers = {"Content-type=application/json"})
 	public String TestingAnalyticsAPI1(@RequestBody List<AnalyticsDataReceiverDTO> logs) throws JsonParseException, JsonMappingException, IOException{
 		InputStream inputStream = getClass().getResourceAsStream("/machine/MachineConstants.xml");
 		String metafilepath = RetrieveResources.retrieveResourcesAppConatants(inputStream, "storageinfofilepath").get(0);
