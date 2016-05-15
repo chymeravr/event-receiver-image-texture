@@ -2,67 +2,108 @@
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-<!--     <appender name="console" class="org.apache.log4j.ConsoleAppender"> -->
-<!-- 		<param name="target" value="System.out" /> -->
-<!-- 		<param name="threshold" value="debug" /> -->
-<!-- 		<layout class="org.apache.log4j.PatternLayout"> -->
-<!-- 			<param name="ConversionPattern" value="%d{ISO8601} %-5p [%c{1}] - %m%n" /> -->
-<!-- 		</layout> -->
-<!-- 	</appender> -->
-	<appender name="default.file" class="org.apache.log4j.FileAppender">
-		<param name="file" value="${catalina.home}/logs/chimeradefault.log" />
-		<param name="append" value="false" />
-		<param name="maxFileSize" value="100000KB" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS}:%p - %m%n" />
-		</layout>
-	</appender>
-	<appender name="spring.file" class="org.apache.log4j.FileAppender">
-		<param name="file" value="${catalina.home}/logs/chimeraspring.log" />
-		<param name="append" value="false" />
-		<param name="maxFileSize" value="100000KB" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS}:%p - %m%n" />
-		</layout>
-	</appender>
-	<appender name="chimera.file" class="org.apache.log4j.FileAppender">
-		<param name="file" value="${catalina.home}/logs/chimeramain.log" />
-		<param name="append" value="false" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS}:%p - %m%n" />
-		</layout>
-	</appender>
-
-	<appender name="analytics.file" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="file" value="${catalina.home}/logs/analytics.log" />
-		<param name="datePattern" value="'.'yyyy-MM-dd-HH-mm" />
+	<!-- <appender name="console" class="org.apache.log4j.ConsoleAppender"> -->
+	<!-- <param name="target" value="System.out" /> -->
+	<!-- <param name="threshold" value="debug" /> -->
+	<!-- <layout class="org.apache.log4j.PatternLayout"> -->
+	<!-- <param name="ConversionPattern" value="%d{ISO8601} %-5p [%c{1}] - %m%n" 
+		/> -->
+	<!-- </layout> -->
+	<!-- </appender> -->
+	<appender name="default.file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file"
+			value="${catalina.home}/logs/chimera_analytics_data_receiver.log" />
+		<param name="datePattern" value="'.'yyyy-MM-dd" />
 		<param name="append" value="true" />
-		
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS}:%p - %m%n" />
+		</layout>
+	</appender>
+	<appender name="default.async" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="10000" />
+		<param name="Blocking" value="true" />
+		<appender-ref ref="default.file" />
+	</appender>
+	<appender name="appstart.file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${catalina.home}/logs/analytics_appstart.log" />
+		<param name="datePattern" value="'.'yyyy-MM-dd-HH" />
+		<param name="append" value="true" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%m%n" />
 		</layout>
 	</appender>
-	<appender name="analytics.async" class="org.apache.log4j.AsyncAppender">
+	<appender name="appstart.async" class="org.apache.log4j.AsyncAppender">
 		<param name="BufferSize" value="10000" />
 		<param name="Blocking" value="true" />
-		<appender-ref ref="analytics.file" />
+		<appender-ref ref="appstart.file" />
 	</appender>
-	
-	<logger name="co.chimeralabs.analytics.datareceiver.controller">
+	<appender name="append.file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${catalina.home}/logs/analytics_append.log" />
+		<param name="datePattern" value="'.'yyyy-MM-dd-HH" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+	<appender name="append.async" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="10000" />
+		<param name="Blocking" value="true" />
+		<appender-ref ref="append.file" />
+	</appender>
+	<appender name="addisplayed.file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${catalina.home}/logs/analytics_addisplayed.log" />
+		<param name="datePattern" value="'.'yyyy-MM-dd-HH" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+	<appender name="addisplayed.async" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="10000" />
+		<param name="Blocking" value="true" />
+		<appender-ref ref="addisplayed.file" />
+	</appender>
+	<appender name="visibilitymetric.file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file"
+			value="${catalina.home}/logs/analytics_visibilitymetric.log" />
+		<param name="datePattern" value="'.'yyyy-MM-dd-HH" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+	<appender name="visibilitymetric.async" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="10000" />
+		<param name="Blocking" value="true" />
+		<appender-ref ref="visibilitymetric.file" />
+	</appender>
+
+	<logger
+		name="co.chimeralabs.analytics.datareceiver.controller.AnalyticsDataRecieverController.appstart"
+		additivity="false">
 		<level value="info" />
-		<appender-ref ref="analytics.async" />
+		<appender-ref ref="appstart.async" />
 	</logger>
-	<logger name="co.chimeralabs">
-		<level value="debug" />
-		<appender-ref ref="chimera.file" />
+	<logger
+		name="co.chimeralabs.analytics.datareceiver.controller.AnalyticsDataRecieverController.append"
+		additivity="false">
+		<level value="info" />
+		<appender-ref ref="append.async" />
 	</logger>
-	<logger name="org.springframework">
-		<level value="debug" />
-		<appender-ref ref="spring.file" />
+	<logger
+		name="co.chimeralabs.analytics.datareceiver.controller.AnalyticsDataRecieverController.addisplayed"
+		additivity="false">
+		<level value="info" />
+		<appender-ref ref="addisplayed.async" />
+	</logger>
+	<logger
+		name="co.chimeralabs.analytics.datareceiver.controller.AnalyticsDataRecieverController.visibilitymetric"
+		additivity="false">
+		<level value="info" />
+		<appender-ref ref="visibilitymetric.async" />
 	</logger>
 	<root>
-		<priority value="debug" />
-		<appender-ref ref="default.file" />
+		<priority value="info" />
+		<appender-ref ref="default.async" />
 	</root>
-	
 </log4j:configuration>

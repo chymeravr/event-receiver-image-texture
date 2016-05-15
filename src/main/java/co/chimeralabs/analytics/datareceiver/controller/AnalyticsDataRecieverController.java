@@ -24,14 +24,18 @@ import co.chimeralabs.analytics.datareceiver.util.RetrieveResources;
 
 @Controller
 public class AnalyticsDataRecieverController {
-	private static final Logger analyticsLogger = LoggerFactory.getLogger(AnalyticsDataRecieverController.class);
+	private static final Logger appstartLogger = LoggerFactory.getLogger(AnalyticsDataRecieverController.class.getName() + ".appstart");
+	private static final Logger appendLogger = LoggerFactory.getLogger(AnalyticsDataRecieverController.class.getName() + ".append");
+	private static final Logger adDisplayedLogger = LoggerFactory.getLogger(AnalyticsDataRecieverController.class.getName() + ".addisplayed");
+	private static final Logger visibilityMetricLogger = LoggerFactory.getLogger(AnalyticsDataRecieverController.class.getName() + ".visibilitymetric");
+	
 	//private static final Logger analyticsLogger = LogManager.getLogger(AnalyticsDataRecieverController.class);
 	
 	@Autowired
 	BigDataFS bigDataFS;
 
 	@ResponseBody
-	@RequestMapping(value="/analytics_1", method=RequestMethod.POST, headers = {"Content-type=application/json"})
+	@RequestMapping(value="/analytics_bak", method=RequestMethod.POST, headers = {"Content-type=application/json"})
 	public String TestingAnalyticsAPI1(@RequestBody List<AnalyticsDataReceiverDTO> logs) throws JsonParseException, JsonMappingException, IOException{
 		InputStream inputStream = getClass().getResourceAsStream("/machine/MachineConstants.xml");
 		String metafilepath = RetrieveResources.retrieveResourcesAppConatants(inputStream, "storageinfofilepath").get(0);
@@ -110,29 +114,22 @@ public class AnalyticsDataRecieverController {
 			log.setDtoObj(timestamp.toString() + "\t" + log.getType() + "\t" +log.getDtoObj());
 			switch(log.getType()){
 			case 1:
-				analyticsLogger.info(log.getDtoObj());
+				appstartLogger.info(log.getDtoObj());
 				break;
 			case 2:
-				analyticsLogger.info(log.getDtoObj());
+				appendLogger.info(log.getDtoObj());
 				break;
 			case 3:
-				analyticsLogger.info(log.getDtoObj());
+				adDisplayedLogger.info(log.getDtoObj());
 				break;
 			case 4:
-				analyticsLogger.info(log.getDtoObj());
+				visibilityMetricLogger.info(log.getDtoObj());
 				break;
 			case 5:
-				analyticsLogger.info(log.getDtoObj());
+				//analyticsLogger.info(log.getDtoObj());
 				break;
 			}
 		}
-		return "success";
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/testinglog4j2", method=RequestMethod.GET)
-	public String testing(){
-		analyticsLogger.info("test");
 		return "success";
 	}
 	
