@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Appenders>
+<!-- 		<Console name="console" target="SYSTEM_OUT"> -->
+<!-- 			<PatternLayout -->
+<!-- 				pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" /> -->
+<!-- 		</Console> -->
+		<RollingFile name="default"
+			fileName="${sys:catalina.home}/logs/chimera_analytics_data_receiver.log"
+			filePattern="${sys:catalina.home}/logs/chimera_analytics_data_receiver.%d{yyyy-MM-dd}.log">
+			<PatternLayout pattern="%d %p | %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+			</Policies>
+		</RollingFile>
+		<Async name="defaultAsync">
+			<AppenderRef ref="default" />
+		</Async>
+		
+		<Flume name="appstart" type="Avro" compress="false">
+			<Agent host="localhost" port="21111" />
+			<PatternLayout pattern="%m%n" />
+		</Flume>
+		<Async name="appstartAsync">
+			<AppenderRef ref="appstart" />
+		</Async>
+		
+		<Flume name="append" type="Avro" compress="false">
+			<Agent host="localhost" port="21112" />
+			<PatternLayout pattern="%m%n" />
+		</Flume>
+		<Async name="appendAsync">
+			<AppenderRef ref="append" />
+		</Async>
+		
+		
+		<Flume name="addisplayed" type="Avro" compress="false">
+			<Agent host="localhost" port="21113" />
+			<PatternLayout pattern="%m%n" />
+		</Flume>
+		<Async name="addisplayedAsync">
+			<AppenderRef ref="addisplayed" />
+		</Async>
+		
+		
+		<Flume name="visibilitymetric" type="Avro" compress="false">
+			<Agent host="localhost" port="21113" />
+			<PatternLayout pattern="%m%n" />
+		</Flume>
+		<Async name="visibilitymetricAsync">
+			<AppenderRef ref="visibilitymetric" />
+		</Async>
+		
+	</Appenders>
+	<Loggers>
+		<Root level="info" additivity="false">
+			<AppenderRef ref="defaultAsync" />
+		</Root>
+		<Logger level="info"
+			name="co.chimeralabs.analytics.datareceiver.controller.AnalyticsDataRecieverController.appstart"
+			additivity="false">
+			<AppenderRef ref="appstartAsync" />
+		</Logger>
+		<Logger level="info"
+			name="co.chimeralabs.analytics.datareceiver.controller.AnalyticsDataRecieverController.append"
+			additivity="false">
+			<AppenderRef ref="appendAsync" />	
+		</Logger>
+		<Logger level="info"
+			name="co.chimeralabs.analytics.datareceiver.controller.AnalyticsDataRecieverController.addisplayed"
+			additivity="false">
+			<AppenderRef ref="addisplayedAsync" />	
+		</Logger>
+		<Logger level="info"
+			name="co.chimeralabs.analytics.datareceiver.controller.AnalyticsDataRecieverController.visibilitymetric"
+			additivity="false">
+			<AppenderRef ref="visibilitymetricAsync" />	
+		</Logger>
+	</Loggers>
+</Configuration>
