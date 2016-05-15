@@ -1,0 +1,47 @@
+########################################### appstart sender logging agent ##############################################
+#Name components of agent
+appStartSendAgent.sources = avro-source-appstart
+appStartSendAgent.channels = memory-channel-appstart
+appStartSendAgent.sinks = avro-sink-appstart
+
+#Describe source
+appStartSendAgent.sources.avro-source-appstart.type = avro
+appStartSendAgent.sources.avro-source-appstart.bind = 0.0.0.0
+appStartSendAgent.sources.avro-source-appstart.port = 21111
+
+#Describe sink
+appStartSendAgent.sinks.avro-sink-appstart.type = avro
+appStartSendAgent.sinks.avro-sink-appstart.hostname = 207.46.235.103
+appStartSendAgent.sinks.avro-sink-appstart.port = 11111
+
+#Describe channel
+appStartSendAgent.channels.memory-channel-appstart.type = memory
+
+#Bind source and sink to channel
+appStartSendAgent.sources.avro-source-appstart.channels = memory-channel-appstart
+appStartSendAgent.sinks.avro-sink-appstart.channel = memory-channel-appstart
+
+
+########################################### append sender logging agent ##############################################
+#Name components of agent
+appEndSendAgent.sources = avro-source-append
+appEndSendAgent.channels = memory-channel-append
+appEndSendAgent.sinks = avro-sink-append
+
+#Describe source
+appEndSendAgent.sources.avro-source-append.type = avro
+appEndSendAgent.sources.avro-source-append.bind = 0.0.0.0
+appEndSendAgent.sources.avro-source-append.port = 21112
+
+#Describe sink
+appEndSendAgent.sinks.avro-sink-append.type = avro
+appEndSendAgent.sinks.avro-sink-append.hostname = 207.46.235.103
+appEndSendAgent.sinks.avro-sink-append.port = 11112
+
+#Describe channel
+appEndSendAgent.channels.memory-channel-append.type = memory
+
+#Bind source and sink to channel
+appEndSendAgent.sources.avro-source-append.channels = memory-channel-append
+appEndSendAgent.sinks.avro-sink-append.channel = memory-channel-append
+

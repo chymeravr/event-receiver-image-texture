@@ -1,0 +1,130 @@
+########################################### appstart receiver logging agent ##############################################
+#Name components of agent
+appStartRecvAgent.sources = avro-source-appstart
+appStartRecvAgent.channels = memory-channel-appstart
+appStartRecvAgent.sinks = hdfs-sink-appstart
+
+#Describe source
+appStartRecvAgent.sources.avro-source-appstart.type = avro
+appStartRecvAgent.sources.avro-source-appstart.bind = 0.0.0.0
+appStartRecvAgent.sources.avro-source-appstart.port = 11111
+
+#Describe sink
+appStartRecvAgent.sinks.hdfs-sink-appstart.type = hdfs
+appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.path = hdfs://localhost:9000/flume/appstartlogs
+appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.fileprefix = log-%Y-%m-%d-%H-%M
+appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.useLocalTimeStamp = true
+appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.fileType = DataStream
+appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.writeFormat = Text
+
+#Describe channel
+appStartRecvAgent.channels.memory-channel-appstart.type = memory
+
+#Bind source and sink to channel
+appStartRecvAgent.sources.avro-source-appstart.channels = memory-channel-appstart
+appStartRecvAgent.sinks.hdfs-sink-appstart.channel = memory-channel-appstart
+
+########################################### append receiver logging agent ##############################################
+#Name components of agent
+appEndRecvAgent.sources = avro-source-append
+appEndRecvAgent.channels = memory-channel-append
+appEndRecvAgent.sinks = hdfs-sink-append
+
+#Describe source
+appEndRecvAgent.sources.avro-source-append.type = avro
+appEndRecvAgent.sources.avro-source-append.bind = 0.0.0.0
+appEndRecvAgent.sources.avro-source-append.port = 11112
+
+#Describe sink
+appEndRecvAgent.sinks.hdfs-sink-append.type = hdfs
+appEndRecvAgent.sinks.hdfs-sink-append.hdfs.path = hdfs://localhost:9000/flume/appendlogs
+appEndRecvAgent.sinks.hdfs-sink-append.hdfs.fileprefix = log-%Y-%m-%d-%H-%M
+appEndRecvAgent.sinks.hdfs-sink-append.hdfs.useLocalTimeStamp = true
+appEndRecvAgent.sinks.hdfs-sink-append.hdfs.fileType = DataStream
+appEndRecvAgent.sinks.hdfs-sink-append.hdfs.writeFormat = Text
+
+#Describe channel
+appEndRecvAgent.channels.memory-channel-append.type = memory
+
+#Bind source and sink to channel
+appEndRecvAgent.sources.avro-source-append.channels = memory-channel-append
+appEndRecvAgent.sinks.hdfs-sink-append.channel = memory-channel-append
+
+########################################### adserved receiver logging agent ##############################################
+#Name components of agent
+adServedRecvAgent.sources = avro-source-adserved
+adServedRecvAgent.channels = memory-channel-adserved
+adServedRecvAgent.sinks = hdfs-sink-adserved
+
+#Describe source
+adServedRecvAgent.sources.avro-source-adserved.type = avro
+adServedRecvAgent.sources.avro-source-adserved.bind = 0.0.0.0
+adServedRecvAgent.sources.avro-source-adserved.port = 11113
+
+#Describe sink
+adServedRecvAgent.sinks.hdfs-sink-adserved.type = hdfs
+adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.path = hdfs://localhost:9000/flume/adservedlogs
+adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.fileprefix = log-%Y-%m-%d-%H-%M
+adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.useLocalTimeStamp = true
+adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.fileType = DataStream
+adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.writeFormat = Text
+
+#Describe channel
+adServedRecvAgent.channels.memory-channel-adserved.type = memory
+
+#Bind source and sink to channel
+adServedRecvAgent.sources.avro-source-adserved.channels = memory-channel-adserved
+adServedRecvAgent.sinks.hdfs-sink-adserved.channel = memory-channel-adserved
+
+########################################### addisplayed receiver logging agent ##############################################
+#Name components of agent
+adDisplayedRecvAgent.sources = avro-source-addisplayed
+adDisplayedRecvAgent.channels = memory-channel-addisplayed
+adDisplayedRecvAgent.sinks = hdfs-sink-addisplayed
+
+#Describe source
+adDisplayedRecvAgent.sources.avro-source-addisplayed.type = avro
+adDisplayedRecvAgent.sources.avro-source-addisplayed.bind = 0.0.0.0
+adDisplayedRecvAgent.sources.avro-source-addisplayed.port = 11114
+
+#Describe sink
+adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.type = hdfs
+adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.path = hdfs://localhost:9000/flume/addisplayedlogs
+adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.fileprefix = log-%Y-%m-%d-%H-%M
+adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.useLocalTimeStamp = true
+adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.fileType = DataStream
+adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.writeFormat = Text
+
+#Describe channel
+adDisplayedRecvAgent.channels.memory-channel-addisplayed.type = memory
+
+#Bind source and sink to channel
+adDisplayedRecvAgent.sources.avro-source-addisplayed.channels = memory-channel-addisplayed
+adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.channel = memory-channel-addisplayed
+
+########################################### visibilitymetric receiver logging agent ##############################################
+#Name components of agent
+visibilityMetricRecvAgent.sources = avro-source-visibilitymetric
+visibilityMetricRecvAgent.channels = memory-channel-visibilitymetric
+visibilityMetricRecvAgent.sinks = hdfs-sink-visibilitymetric
+
+#Describe source
+visibilityMetricRecvAgent.sources.avro-source-visibilitymetric.type = avro
+visibilityMetricRecvAgent.sources.avro-source-visibilitymetric.hostname = 0.0.0.0
+visibilityMetricRecvAgent.sources.avro-source-visibilitymetric.port = 11115
+
+#Describe sink
+visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.type = hdfs
+visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.path = hdfs://localhost:9000/flume/visibilitymetriclogs
+visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.fileprefix = log-%Y-%m-%d-%H-%M
+visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.useLocalTimeStamp = true
+visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.fileType = DataStream
+visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.writeFormat = Text
+
+#Describe channel
+visibilityMetricRecvAgent.channels.memory-channel-visibilitymetric.type = memory
+
+#Bind source and sink to channel
+visibilityMetricRecvAgent.sources.avro-source-visibilitymetric.channels = memory-channel-visibilitymetric
+visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.channel = memory-channel-visibilitymetric
+
