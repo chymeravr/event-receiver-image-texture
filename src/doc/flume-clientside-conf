@@ -11,7 +11,7 @@ appStartSendAgent.sources.avro-source-appstart.port = 21111
 
 #Describe sink
 appStartSendAgent.sinks.avro-sink-appstart.type = avro
-appStartSendAgent.sinks.avro-sink-appstart.hostname = http://analyticsbackend.developer.chimeralabs.co
+appStartSendAgent.sinks.avro-sink-appstart.hostname = analyticsbackend.developer.chimeralabs.co
 appStartSendAgent.sinks.avro-sink-appstart.port = 11111
 
 #Describe channel
@@ -35,7 +35,7 @@ appEndSendAgent.sources.avro-source-append.port = 21112
 
 #Describe sink
 appEndSendAgent.sinks.avro-sink-append.type = avro
-appEndSendAgent.sinks.avro-sink-append.hostname = http://analyticsbackend.developer.chimeralabs.co
+appEndSendAgent.sinks.avro-sink-append.hostname = analyticsbackend.developer.chimeralabs.co
 appEndSendAgent.sinks.avro-sink-append.port = 11112
 
 #Describe channel
@@ -44,4 +44,50 @@ appEndSendAgent.channels.memory-channel-append.type = memory
 #Bind source and sink to channel
 appEndSendAgent.sources.avro-source-append.channels = memory-channel-append
 appEndSendAgent.sinks.avro-sink-append.channel = memory-channel-append
+
+########################################### addisplayed sender logging agent ##############################################
+#Name components of agent
+adDisplayedSendAgent.sources = avro-source-addisplayed
+adDisplayedSendAgent.channels = memory-channel-addisplayed
+adDisplayedSendAgent.sinks = avro-sink-addisplayed
+
+#Describe source
+adDisplayedSendAgent.sources.avro-source-addisplayed.type = avro
+adDisplayedSendAgent.sources.avro-source-addisplayed.bind = 0.0.0.0
+adDisplayedSendAgent.sources.avro-source-addisplayed.port = 21114
+
+#Describe sink
+adDisplayedSendAgent.sinks.avro-sink-addisplayed.type = avro
+adDisplayedSendAgent.sinks.avro-sink-addisplayed.hostname = analyticsbackend.developer.chimeralabs.co
+adDisplayedSendAgent.sinks.avro-sink-addisplayed.port = 11114
+
+#Describe channel
+adDisplayedSendAgent.channels.memory-channel-addisplayed.type = memory
+
+#Bind source and sink to channel
+adDisplayedSendAgent.sources.avro-source-addisplayed.channels = memory-channel-addisplayed
+adDisplayedSendAgent.sinks.avro-sink-addisplayed.channel = memory-channel-addisplayed
+
+########################################### visibilitymetric sender logging agent ##############################################
+#Name components of agent
+visibilityMetricSendAgent.sources = avro-source-visibilitymetric
+visibilityMetricSendAgent.channels = memory-channel-visibilitymetric
+visibilityMetricSendAgent.sinks = avro-sink-visibilitymetric
+
+#Describe source
+visibilityMetricSendAgent.sources.avro-source-visibilitymetric.type = avro
+visibilityMetricSendAgent.sources.avro-source-visibilitymetric.bind = 0.0.0.0
+visibilityMetricSendAgent.sources.avro-source-visibilitymetric.port = 21115
+
+#Describe sink
+visibilityMetricSendAgent.sinks.avro-sink-visibilitymetric.type = avro
+visibilityMetricSendAgent.sinks.avro-sink-visibilitymetric.hostname = analyticsbackend.developer.chimeralabs.co
+visibilityMetricSendAgent.sinks.avro-sink-visibilitymetric.port = 11115
+
+#Describe channel
+visibilityMetricSendAgent.channels.memory-channel-visibilitymetric.type = memory
+
+#Bind source and sink to channel
+visibilityMetricSendAgent.sources.avro-source-visibilitymetric.channels = memory-channel-visibilitymetric
+visibilityMetricSendAgent.sinks.avro-sink-visibilitymetric.channel = memory-channel-visibilitymetric
 

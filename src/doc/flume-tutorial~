@@ -2,10 +2,13 @@
 #Apache Flume
 Tutorial for setting up flume with log4j http://www.thecloudavenue.com/2013/11/using-log4jflume-to-log-application.html
 
-Keep following things in mind
-1. Allow the ports for flume agents in azure portal
-2. Take care of conf/yarn-env.sh
-2. Start hdfs and yarn before starting flume
-3. Start flume agent using
-4. 
-
+Instructinons
+1. Make sure java and hadoop environment vairables are set in ~/.bashrc. Reload by source ~/.bashrc
+2. Download and extract flume.
+3. Set flume-env.sh
+4. Set flume.conf
+5. If hdfs is required start start-dfs.sh and start-yarn.sh
+6. Check from cloud portal if the ports required for agents needs to be allowed
+7. Start agent using bin/flume-ng agent --conf ./conf/ -f conf/flume.conf -n visibilityMetricRecvAgent &
+8. Start avro client if required using
+9. In log4j2.xml make sure that correct ports are marked and compression is off
