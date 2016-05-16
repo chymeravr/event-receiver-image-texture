@@ -35,7 +35,7 @@
 		
 		
 		<Flume name="addisplayed" type="Avro" compress="false">
-			<Agent host="localhost" port="21113" />
+			<Agent host="localhost" port="21114" />
 			<PatternLayout pattern="%m%n" />
 		</Flume>
 		<Async name="addisplayedAsync">
@@ -44,7 +44,7 @@
 		
 		
 		<Flume name="visibilitymetric" type="Avro" compress="false">
-			<Agent host="localhost" port="21113" />
+			<Agent host="localhost" port="21115" />
 			<PatternLayout pattern="%m%n" />
 		</Flume>
 		<Async name="visibilitymetricAsync">

@@ -110,7 +110,7 @@ visibilityMetricRecvAgent.sinks = hdfs-sink-visibilitymetric
 
 #Describe source
 visibilityMetricRecvAgent.sources.avro-source-visibilitymetric.type = avro
-visibilityMetricRecvAgent.sources.avro-source-visibilitymetric.hostname = 0.0.0.0
+visibilityMetricRecvAgent.sources.avro-source-visibilitymetric.bind = 0.0.0.0
 visibilityMetricRecvAgent.sources.avro-source-visibilitymetric.port = 11115
 
 #Describe sink

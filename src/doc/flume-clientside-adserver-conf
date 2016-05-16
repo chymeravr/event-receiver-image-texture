@@ -1,0 +1,22 @@
+########################################### adserved sender logging agent ##############################################
+#Name components of agent
+adServedSendAgent.sources = avro-source-adserved
+adServedSendAgent.channels = memory-channel-adserved
+adServedSendAgent.sinks = avro-sink-adserved
+
+#Describe source
+adServedSendAgent.sources.avro-source-adserved.type = avro
+adServedSendAgent.sources.avro-source-adserved.bind = 0.0.0.0
+adServedSendAgent.sources.avro-source-adserved.port = 21113
+
+#Describe sink
+adServedSendAgent.sinks.avro-sink-adserved.type = avro
+adServedSendAgent.sinks.avro-sink-adserved.hostname = analyticsbackend.developer.chimeralabs.co
+adServedSendAgent.sinks.avro-sink-adserved.port = 11113
+
+#Describe channel
+adServedSendAgent.channels.memory-channel-adserved.type = memory
+
+#Bind source and sink to channel
+adServedSendAgent.sources.avro-source-adserved.channels = memory-channel-adserved
+adServedSendAgent.sinks.avro-sink-adserved.channel = memory-channel-adserved
