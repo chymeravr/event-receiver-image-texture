@@ -12,7 +12,7 @@ appStartRecvAgent.sources.avro-source-appstart.port = 11111
 #Describe sink
 appStartRecvAgent.sinks.hdfs-sink-appstart.type = hdfs
 appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.path = hdfs://localhost:9000/flume/appstartlogs
-appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.fileprefix = log-%Y-%m-%d-%H-%M
+appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.filePrefix = log-%Y-%m-%d-%H
 appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.useLocalTimeStamp = true
 appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.fileType = DataStream
 appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.writeFormat = Text
@@ -38,7 +38,7 @@ appEndRecvAgent.sources.avro-source-append.port = 11112
 #Describe sink
 appEndRecvAgent.sinks.hdfs-sink-append.type = hdfs
 appEndRecvAgent.sinks.hdfs-sink-append.hdfs.path = hdfs://localhost:9000/flume/appendlogs
-appEndRecvAgent.sinks.hdfs-sink-append.hdfs.fileprefix = log-%Y-%m-%d-%H-%M
+appEndRecvAgent.sinks.hdfs-sink-append.hdfs.filePrefix = log-%Y-%m-%d-%H
 appEndRecvAgent.sinks.hdfs-sink-append.hdfs.useLocalTimeStamp = true
 appEndRecvAgent.sinks.hdfs-sink-append.hdfs.fileType = DataStream
 appEndRecvAgent.sinks.hdfs-sink-append.hdfs.writeFormat = Text
@@ -64,7 +64,7 @@ adServedRecvAgent.sources.avro-source-adserved.port = 11113
 #Describe sink
 adServedRecvAgent.sinks.hdfs-sink-adserved.type = hdfs
 adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.path = hdfs://localhost:9000/flume/adservedlogs
-adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.fileprefix = log-%Y-%m-%d-%H-%M
+adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.filePrefix = log-%Y-%m-%d-%H
 adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.useLocalTimeStamp = true
 adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.fileType = DataStream
 adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.writeFormat = Text
@@ -90,7 +90,7 @@ adDisplayedRecvAgent.sources.avro-source-addisplayed.port = 11114
 #Describe sink
 adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.type = hdfs
 adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.path = hdfs://localhost:9000/flume/addisplayedlogs
-adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.fileprefix = log-%Y-%m-%d-%H-%M
+adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.filePrefix = log-%Y-%m-%d-%H
 adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.useLocalTimeStamp = true
 adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.fileType = DataStream
 adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.writeFormat = Text
@@ -116,7 +116,7 @@ visibilityMetricRecvAgent.sources.avro-source-visibilitymetric.port = 11115
 #Describe sink
 visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.type = hdfs
 visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.path = hdfs://localhost:9000/flume/visibilitymetriclogs
-visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.fileprefix = log-%Y-%m-%d-%H-%M
+visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.filePrefix = log-%Y-%m-%d-%H
 visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.useLocalTimeStamp = true
 visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.fileType = DataStream
 visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.writeFormat = Text
