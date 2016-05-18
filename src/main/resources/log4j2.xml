@@ -19,7 +19,7 @@
 		
 		<Flume name="appstart" type="Avro" compress="false">
 			<Agent host="localhost" port="21111" />
-			<PatternLayout pattern="%m%n" />
+			<PatternLayout pattern="%m" />
 		</Flume>
 		<Async name="appstartAsync">
 			<AppenderRef ref="appstart" />
@@ -27,7 +27,7 @@
 		
 		<Flume name="append" type="Avro" compress="false">
 			<Agent host="localhost" port="21112" />
-			<PatternLayout pattern="%m%n" />
+			<PatternLayout pattern="%m" />
 		</Flume>
 		<Async name="appendAsync">
 			<AppenderRef ref="append" />
@@ -36,7 +36,7 @@
 		
 		<Flume name="addisplayed" type="Avro" compress="false">
 			<Agent host="localhost" port="21114" />
-			<PatternLayout pattern="%m%n" />
+			<PatternLayout pattern="%m" />
 		</Flume>
 		<Async name="addisplayedAsync">
 			<AppenderRef ref="addisplayed" />
@@ -45,7 +45,7 @@
 		
 		<Flume name="visibilitymetric" type="Avro" compress="false">
 			<Agent host="localhost" port="21115" />
-			<PatternLayout pattern="%m%n" />
+			<PatternLayout pattern="%m" />
 		</Flume>
 		<Async name="visibilitymetricAsync">
 			<AppenderRef ref="visibilitymetric" />
