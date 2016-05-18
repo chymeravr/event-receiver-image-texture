@@ -1,7 +1,7 @@
 ########################################### appstart sender logging agent ##############################################
 #Name components of agent
 appStartSendAgent.sources = avro-source-appstart
-appStartSendAgent.channels = memory-channel-appstart
+appStartSendAgent.channels = file-channel-appstart
 appStartSendAgent.sinks = avro-sink-appstart
 
 #Describe source
@@ -15,17 +15,19 @@ appStartSendAgent.sinks.avro-sink-appstart.hostname = analyticsbackend.developer
 appStartSendAgent.sinks.avro-sink-appstart.port = 11111
 
 #Describe channel
-appStartSendAgent.channels.memory-channel-appstart.type = memory
+appStartSendAgent.channels.file-channel-appstart.type = file
+appStartSendAgent.channels.file-channel-appstart.checkpointDir = /home/analyticsdatareceiverdevel/Softies/apache-flume-1.6.0-bin/checkpoint/appstart
+appStartSendAgent.channels.file-channel-appstart.dataDirs = /home/analyticsdatareceiverdevel/Softies/apache-flume-1.6.0-bin/data/appstart
 
 #Bind source and sink to channel
-appStartSendAgent.sources.avro-source-appstart.channels = memory-channel-appstart
-appStartSendAgent.sinks.avro-sink-appstart.channel = memory-channel-appstart
+appStartSendAgent.sources.avro-source-appstart.channels = file-channel-appstart
+appStartSendAgent.sinks.avro-sink-appstart.channel = file-channel-appstart
 
 
 ########################################### append sender logging agent ##############################################
 #Name components of agent
 appEndSendAgent.sources = avro-source-append
-appEndSendAgent.channels = memory-channel-append
+appEndSendAgent.channels = file-channel-append
 appEndSendAgent.sinks = avro-sink-append
 
 #Describe source
@@ -39,16 +41,19 @@ appEndSendAgent.sinks.avro-sink-append.hostname = analyticsbackend.developer.chi
 appEndSendAgent.sinks.avro-sink-append.port = 11112
 
 #Describe channel
-appEndSendAgent.channels.memory-channel-append.type = memory
+appEndSendAgent.channels.file-channel-append.type = file
+appEndSendAgent.channels.file-channel-append.checkpointDir = /home/analyticsdatareceiverdevel/Softies/apache-flume-1.6.0-bin/checkpoint/append
+appEndSendAgent.channels.file-channel-append.dataDirs = /home/analyticsdatareceiverdevel/Softies/apache-flume-1.6.0-bin/data/append
+
 
 #Bind source and sink to channel
-appEndSendAgent.sources.avro-source-append.channels = memory-channel-append
-appEndSendAgent.sinks.avro-sink-append.channel = memory-channel-append
+appEndSendAgent.sources.avro-source-append.channels = file-channel-append
+appEndSendAgent.sinks.avro-sink-append.channel = file-channel-append
 
 ########################################### addisplayed sender logging agent ##############################################
 #Name components of agent
 adDisplayedSendAgent.sources = avro-source-addisplayed
-adDisplayedSendAgent.channels = memory-channel-addisplayed
+adDisplayedSendAgent.channels = file-channel-addisplayed
 adDisplayedSendAgent.sinks = avro-sink-addisplayed
 
 #Describe source
@@ -62,16 +67,18 @@ adDisplayedSendAgent.sinks.avro-sink-addisplayed.hostname = analyticsbackend.dev
 adDisplayedSendAgent.sinks.avro-sink-addisplayed.port = 11114
 
 #Describe channel
-adDisplayedSendAgent.channels.memory-channel-addisplayed.type = memory
+adDisplayedSendAgent.channels.file-channel-addisplayed.type = file
+adDisplayedSendAgent.channels.file-channel-addisplayed.checkpointDir = /home/analyticsdatareceiverdevel/Softies/apache-flume-1.6.0-bin/checkpoint/addisplayed
+adDisplayedSendAgent.channels.file-channel-addisplayed.dataDirs = /home/analyticsdatareceiverdevel/Softies/apache-flume-1.6.0-bin/data/addisplayed
 
 #Bind source and sink to channel
-adDisplayedSendAgent.sources.avro-source-addisplayed.channels = memory-channel-addisplayed
-adDisplayedSendAgent.sinks.avro-sink-addisplayed.channel = memory-channel-addisplayed
+adDisplayedSendAgent.sources.avro-source-addisplayed.channels = file-channel-addisplayed
+adDisplayedSendAgent.sinks.avro-sink-addisplayed.channel = file-channel-addisplayed
 
 ########################################### visibilitymetric sender logging agent ##############################################
 #Name components of agent
 visibilityMetricSendAgent.sources = avro-source-visibilitymetric
-visibilityMetricSendAgent.channels = memory-channel-visibilitymetric
+visibilityMetricSendAgent.channels = file-channel-visibilitymetric
 visibilityMetricSendAgent.sinks = avro-sink-visibilitymetric
 
 #Describe source
@@ -85,9 +92,12 @@ visibilityMetricSendAgent.sinks.avro-sink-visibilitymetric.hostname = analyticsb
 visibilityMetricSendAgent.sinks.avro-sink-visibilitymetric.port = 11115
 
 #Describe channel
-visibilityMetricSendAgent.channels.memory-channel-visibilitymetric.type = memory
+visibilityMetricSendAgent.channels.file-channel-visibilitymetric.type = file
+visibilityMetricSendAgent.channels.file-channel-visibilitymetric.checkpointDir = /home/analyticsdatareceiverdevel/Softies/apache-flume-1.6.0-bin/checkpoint/visibilitymetric
+visibilityMetricSendAgent.channels.file-channel-visibilitymetric.dataDirs = /home/analyticsdatareceiverdevel/Softies/apache-flume-1.6.0-bin/data/visibilitymetric
+
 
 #Bind source and sink to channel
-visibilityMetricSendAgent.sources.avro-source-visibilitymetric.channels = memory-channel-visibilitymetric
-visibilityMetricSendAgent.sinks.avro-sink-visibilitymetric.channel = memory-channel-visibilitymetric
+visibilityMetricSendAgent.sources.avro-source-visibilitymetric.channels = file-channel-visibilitymetric
+visibilityMetricSendAgent.sinks.avro-sink-visibilitymetric.channel = file-channel-visibilitymetric
 

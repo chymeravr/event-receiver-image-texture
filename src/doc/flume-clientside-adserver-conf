@@ -1,7 +1,7 @@
 ########################################### adserved sender logging agent ##############################################
 #Name components of agent
 adServedSendAgent.sources = avro-source-adserved
-adServedSendAgent.channels = memory-channel-adserved
+adServedSendAgent.channels = file-channel-adserved
 adServedSendAgent.sinks = avro-sink-adserved
 
 #Describe source
@@ -15,8 +15,10 @@ adServedSendAgent.sinks.avro-sink-adserved.hostname = analyticsbackend.developer
 adServedSendAgent.sinks.avro-sink-adserved.port = 11113
 
 #Describe channel
-adServedSendAgent.channels.memory-channel-adserved.type = memory
+adServedSendAgent.channels.file-channel-adserved.type = file
+adServedSendAgent.channels.file-channel-adserved.checkpointDir = /home/adserverdevel/Softies/apache-flume-1.6.0-bin/checkpoint/adserved
+adServedSendAgent.channels.file-channel-adserved.dataDirs = /home/adserverdevel/Softies/apache-flume-1.6.0-bin/data/adserved
 
 #Bind source and sink to channel
-adServedSendAgent.sources.avro-source-adserved.channels = memory-channel-adserved
-adServedSendAgent.sinks.avro-sink-adserved.channel = memory-channel-adserved
+adServedSendAgent.sources.avro-source-adserved.channels = file-channel-adserved
+adServedSendAgent.sinks.avro-sink-adserved.channel = file-channel-adserved

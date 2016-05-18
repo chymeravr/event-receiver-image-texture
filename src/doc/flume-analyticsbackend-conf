@@ -1,7 +1,7 @@
 ########################################### appstart receiver logging agent ##############################################
 #Name components of agent
 appStartRecvAgent.sources = avro-source-appstart
-appStartRecvAgent.channels = memory-channel-appstart
+appStartRecvAgent.channels = file-channel-appstart
 appStartRecvAgent.sinks = hdfs-sink-appstart
 
 #Describe source
@@ -11,23 +11,28 @@ appStartRecvAgent.sources.avro-source-appstart.port = 11111
 
 #Describe sink
 appStartRecvAgent.sinks.hdfs-sink-appstart.type = hdfs
-appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.path = hdfs://localhost:9000/flume/appstartlogs
-appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.filePrefix = log-%Y-%m-%d-%H
+appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.path = hdfs://localhost:9000/flume/appstartlogs/%Y-%m-%d-%H
+appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.filePrefix = log
+appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.rollSize = 0
+appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.rollCount = 0
+appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.rollInterval = 0
 appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.useLocalTimeStamp = true
 appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.fileType = DataStream
 appStartRecvAgent.sinks.hdfs-sink-appstart.hdfs.writeFormat = Text
 
 #Describe channel
-appStartRecvAgent.channels.memory-channel-appstart.type = memory
+appStartRecvAgent.channels.file-channel-appstart.type = file
+appStartRecvAgent.channels.file-channel-appstart.checkpointDir = /home/analyticsbackend/Softies/apache-flume-1.6.0-bin/checkpoint/appstart
+appStartRecvAgent.channels.file-channel-appstart.dataDirs = /home/analyticsbackend/Softies/apache-flume-1.6.0-bin/data/appstart
 
 #Bind source and sink to channel
-appStartRecvAgent.sources.avro-source-appstart.channels = memory-channel-appstart
-appStartRecvAgent.sinks.hdfs-sink-appstart.channel = memory-channel-appstart
+appStartRecvAgent.sources.avro-source-appstart.channels = file-channel-appstart
+appStartRecvAgent.sinks.hdfs-sink-appstart.channel = file-channel-appstart
 
 ########################################### append receiver logging agent ##############################################
 #Name components of agent
 appEndRecvAgent.sources = avro-source-append
-appEndRecvAgent.channels = memory-channel-append
+appEndRecvAgent.channels = file-channel-append
 appEndRecvAgent.sinks = hdfs-sink-append
 
 #Describe source
@@ -37,23 +42,28 @@ appEndRecvAgent.sources.avro-source-append.port = 11112
 
 #Describe sink
 appEndRecvAgent.sinks.hdfs-sink-append.type = hdfs
-appEndRecvAgent.sinks.hdfs-sink-append.hdfs.path = hdfs://localhost:9000/flume/appendlogs
-appEndRecvAgent.sinks.hdfs-sink-append.hdfs.filePrefix = log-%Y-%m-%d-%H
+appEndRecvAgent.sinks.hdfs-sink-append.hdfs.path = hdfs://localhost:9000/flume/appendlogs/%Y-%m-%d-%H
+appEndRecvAgent.sinks.hdfs-sink-append.hdfs.filePrefix = log
+appEndRecvAgent.sinks.hdfs-sink-append.hdfs.rollSize = 0
+appEndRecvAgent.sinks.hdfs-sink-append.hdfs.rollCount = 0
+appEndRecvAgent.sinks.hdfs-sink-append.hdfs.rollInterval = 0
 appEndRecvAgent.sinks.hdfs-sink-append.hdfs.useLocalTimeStamp = true
 appEndRecvAgent.sinks.hdfs-sink-append.hdfs.fileType = DataStream
 appEndRecvAgent.sinks.hdfs-sink-append.hdfs.writeFormat = Text
 
 #Describe channel
-appEndRecvAgent.channels.memory-channel-append.type = memory
+appEndRecvAgent.channels.file-channel-append.type = file
+appEndRecvAgent.channels.file-channel-append.checkpointDir = /home/analyticsbackend/Softies/apache-flume-1.6.0-bin/checkpoint/append
+appEndRecvAgent.channels.file-channel-append.dataDirs = /home/analyticsbackend/Softies/apache-flume-1.6.0-bin/data/append
 
 #Bind source and sink to channel
-appEndRecvAgent.sources.avro-source-append.channels = memory-channel-append
-appEndRecvAgent.sinks.hdfs-sink-append.channel = memory-channel-append
+appEndRecvAgent.sources.avro-source-append.channels = file-channel-append
+appEndRecvAgent.sinks.hdfs-sink-append.channel = file-channel-append
 
 ########################################### adserved receiver logging agent ##############################################
 #Name components of agent
 adServedRecvAgent.sources = avro-source-adserved
-adServedRecvAgent.channels = memory-channel-adserved
+adServedRecvAgent.channels = file-channel-adserved
 adServedRecvAgent.sinks = hdfs-sink-adserved
 
 #Describe source
@@ -63,23 +73,28 @@ adServedRecvAgent.sources.avro-source-adserved.port = 11113
 
 #Describe sink
 adServedRecvAgent.sinks.hdfs-sink-adserved.type = hdfs
-adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.path = hdfs://localhost:9000/flume/adservedlogs
-adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.filePrefix = log-%Y-%m-%d-%H
+adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.path = hdfs://localhost:9000/flume/adservedlogs/%Y-%m-%d-%H
+adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.filePrefix = log
+adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.rollSize = 0
+adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.rollCount = 0
+adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.rollInterval = 0
 adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.useLocalTimeStamp = true
 adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.fileType = DataStream
 adServedRecvAgent.sinks.hdfs-sink-adserved.hdfs.writeFormat = Text
 
 #Describe channel
-adServedRecvAgent.channels.memory-channel-adserved.type = memory
+adServedRecvAgent.channels.file-channel-adserved.type = file
+adServedRecvAgent.channels.file-channel-adserved.checkpointDir = /home/analyticsbackend/Softies/apache-flume-1.6.0-bin/checkpoint/adserved
+adServedRecvAgent.channels.file-channel-adserved.dataDirs = /home/analyticsbackend/Softies/apache-flume-1.6.0-bin/data/adserved
 
 #Bind source and sink to channel
-adServedRecvAgent.sources.avro-source-adserved.channels = memory-channel-adserved
-adServedRecvAgent.sinks.hdfs-sink-adserved.channel = memory-channel-adserved
+adServedRecvAgent.sources.avro-source-adserved.channels = file-channel-adserved
+adServedRecvAgent.sinks.hdfs-sink-adserved.channel = file-channel-adserved
 
 ########################################### addisplayed receiver logging agent ##############################################
 #Name components of agent
 adDisplayedRecvAgent.sources = avro-source-addisplayed
-adDisplayedRecvAgent.channels = memory-channel-addisplayed
+adDisplayedRecvAgent.channels = file-channel-addisplayed
 adDisplayedRecvAgent.sinks = hdfs-sink-addisplayed
 
 #Describe source
@@ -89,23 +104,30 @@ adDisplayedRecvAgent.sources.avro-source-addisplayed.port = 11114
 
 #Describe sink
 adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.type = hdfs
-adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.path = hdfs://localhost:9000/flume/addisplayedlogs
-adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.filePrefix = log-%Y-%m-%d-%H
+adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.path = hdfs://localhost:9000/flume/addisplayedlogs/%Y-%m-%d-%H
+adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.filePrefix = log
+adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.rollSize = 0
+adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.rollCount = 0
+adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.rollInterval = 0
 adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.useLocalTimeStamp = true
 adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.fileType = DataStream
 adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.hdfs.writeFormat = Text
 
 #Describe channel
-adDisplayedRecvAgent.channels.memory-channel-addisplayed.type = memory
+adDisplayedRecvAgent.channels.file-channel-addisplayed.type = file
+adDisplayedRecvAgent.channels.file-channel-addisplayed.checkpointDir = /home/analyticsbackend/Softies/apache-flume-1.6.0-bin/checkpoint/addisplayed
+adDisplayedRecvAgent.channels.file-channel-addisplayed.dataDirs = /home/analyticsbackend/Softies/apache-flume-1.6.0-bin/data/addisplayed
 
 #Bind source and sink to channel
-adDisplayedRecvAgent.sources.avro-source-addisplayed.channels = memory-channel-addisplayed
-adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.channel = memory-channel-addisplayed
+adDisplayedRecvAgent.sources.avro-source-addisplayed.channels = file-channel-addisplayed
+adDisplayedRecvAgent.sinks.hdfs-sink-addisplayed.channel = file-channel-addisplayed
+
+
 
 ########################################### visibilitymetric receiver logging agent ##############################################
 #Name components of agent
 visibilityMetricRecvAgent.sources = avro-source-visibilitymetric
-visibilityMetricRecvAgent.channels = memory-channel-visibilitymetric
+visibilityMetricRecvAgent.channels = file-channel-visibilitymetric
 visibilityMetricRecvAgent.sinks = hdfs-sink-visibilitymetric
 
 #Describe source
@@ -115,16 +137,20 @@ visibilityMetricRecvAgent.sources.avro-source-visibilitymetric.port = 11115
 
 #Describe sink
 visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.type = hdfs
-visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.path = hdfs://localhost:9000/flume/visibilitymetriclogs
-visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.filePrefix = log-%Y-%m-%d-%H
+visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.path = hdfs://localhost:9000/flume/visibilitymetriclogs/%Y-%m-%d-%H
+visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.filePrefix = log
+visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.rollSize = 0
+visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.rollCount = 0
+visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.rollInterval = 0
 visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.useLocalTimeStamp = true
 visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.fileType = DataStream
 visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.hdfs.writeFormat = Text
 
 #Describe channel
-visibilityMetricRecvAgent.channels.memory-channel-visibilitymetric.type = memory
+visibilityMetricRecvAgent.channels.file-channel-visibilitymetric.type = file
+visibilityMetricRecvAgent.channels.file-channel-visibilitymetric.checkpointDir = /home/analyticsbackend/Softies/apache-flume-1.6.0-bin/checkpoint/visibilitymetric
+visibilityMetricRecvAgent.channels.file-channel-visibilitymetric.dataDirs = /home/analyticsbackend/Softies/apache-flume-1.6.0-bin/data/visibilitymetric
 
 #Bind source and sink to channel
-visibilityMetricRecvAgent.sources.avro-source-visibilitymetric.channels = memory-channel-visibilitymetric
-visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.channel = memory-channel-visibilitymetric
-
+visibilityMetricRecvAgent.sources.avro-source-visibilitymetric.channels = file-channel-visibilitymetric
+visibilityMetricRecvAgent.sinks.hdfs-sink-visibilitymetric.channel = file-channel-visibilitymetric
